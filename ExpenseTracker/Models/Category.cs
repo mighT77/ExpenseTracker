@@ -3,10 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExpenseTracker.Models
 {
+    //Category of transaction
     public class Category
     {
+        //Primary key
         [Key]
         public int CategoryID { get; set; }
+
+        //Assets
 
         [Column(TypeName ="nvarchar(50)")]
         public string Title { get; set; }

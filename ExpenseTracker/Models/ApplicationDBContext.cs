@@ -1,13 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿// Entity Framework Core functionality
+using Microsoft.EntityFrameworkCore;
+
 namespace ExpenseTracker.Models
 {
-    public class ApplicationDBContext:DbContext
+    // Handles database connection and mapping of models
+    public class ApplicationDBContext : DbContext
     {
-        public ApplicationDBContext(DbContextOptions options):base(options) 
-        { }
+        // Passes configuration options to DbContext
+        public ApplicationDBContext(DbContextOptions options) : base(options) { }
 
+        // Represents 'Transactions' table
         public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<Category> Categories { get; set; }
 
+        // Represents 'Categories' table
+        public DbSet<Category> Categories { get; set; }
     }
 }
