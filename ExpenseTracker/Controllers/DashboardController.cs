@@ -1,5 +1,6 @@
 ﻿using ExpenseTracker.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Transactions;
 
 namespace ExpenseTracker.Controllers
@@ -12,13 +13,16 @@ namespace ExpenseTracker.Controllers
         { 
             _context = context;
         }
-        public async IActionResult Index()
+        public async Task<ActionResult> Index()
         {
             //last 7 days transactions
             DateTime StartDate = DateTime.Today.AddDays(-6);
             DateTime EndDate = DateTime.Today;
 
             List<Transaction> SelectedTransactions = await _context.Transactions
+                .Include(x => x.Category)
+                .Where(y => y.Date >= StartDate && y.Date <= EndDate)
+                .ToListAsync();
 
             return View();
         }
