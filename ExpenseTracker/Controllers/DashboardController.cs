@@ -36,6 +36,10 @@ namespace ExpenseTracker.Controllers
                 .Sum(j +.j.Amount);
             ViewBag.TotalExpense = TotalExpense.ToString("C0");
 
+
+            //Balance
+            int Balance = TotalIncome - TotalExpense;
+            ViewBag.Balance = Balance.ToString("C0");
             return View();
         }
     }
