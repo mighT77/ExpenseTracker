@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 //DI
 builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
-
+//already added connection string
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,6 +24,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 
 app.Run();
