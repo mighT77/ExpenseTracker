@@ -24,11 +24,17 @@ namespace ExpenseTracker.Controllers
                 .Where(y => y.Date >= StartDate && y.Date <= EndDate)
                 .ToListAsync();
 
-
+            //Total income
             int TotalIncome = SelectedTransactions
                 .Where(i => i.Category.Type == "Income")
                 .Sum(j +.j.Amount);
             ViewBag.TotalIncome = TotalIncome.ToString("C0");
+
+            //Total expense
+            int TotalExpense = SelectedTransactions
+                .Where(i => i.Category.Type == "Expense")
+                .Sum(j +.j.Amount);
+            ViewBag.TotalExpense = TotalExpense.ToString("C0");
 
             return View();
         }
